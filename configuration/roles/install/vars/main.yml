@@ -1,0 +1,12 @@
+MYSQL_PASSWD: "SecretPWSD"
+docker_deploy_path: /home/app
+docker_deploy_repository: docker
+docker_deploy_user: app
+
+users:
+  - name: emalo
+    pass: yes
+  - name: app
+    pass: yes
+
+default_user_pass: "*tes1ng"

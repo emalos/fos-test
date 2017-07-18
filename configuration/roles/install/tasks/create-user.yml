@@ -1,0 +1,14 @@
+
+  - name: Creating users {{ item.name }} without admin access
+    user: name={{ item.name }} password={{ default_user_pass |password_hash('sha512')  }} update_password=on_create
+    register: userchanged
+    with_items: "{{ users }}"
+    when: item.pass == true
+
+  - debug: var=userchanged verbosity=2
+
+  - name: Expiring password for user {{ item.name }}
+    shell: chage -d 0 "{{ item.name }}"
+    with_items: "{{ userchanged.results }}"
+    when: "{{ userchanged is defined and item.changed == true }}"
+    ignore_errors: yes

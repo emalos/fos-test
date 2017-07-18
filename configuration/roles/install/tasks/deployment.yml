@@ -1,0 +1,6 @@
+
+- name: include main vars
+  include_vars: main.yml
+
+- name: Running containers!!!!
+  docker_service: project_src={{ docker_deploy_path }}/{{ docker_deploy_repository }}/ state=present build=true

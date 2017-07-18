@@ -1,0 +1,19 @@
+- hosts: localhost
+  connection: local
+  #remote_user: root
+  gather_facts: false
+  roles:
+    - { role: prov }
+
+  # tasks:
+  #   - name: Launch the new EC2 Instance
+  #     local_action: ec2 
+  #                   region= "{{aws_region}}"
+  #                   group={{ ec2_vpc_default }} 
+  #                   instance_type=t2.micro 
+  #                   image={{ ec2_amid_centos7 }} 
+  #                   wait=true 
+  #                   region={{ aws_region }} 
+  #                   count=1
+  #     register: ec2
+

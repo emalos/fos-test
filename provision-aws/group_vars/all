@@ -1,0 +1,7 @@
+
+ec2_access_key: "AKIAJK7Q7FLD23PQHVMA"
+ec2_secret_key: "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"
+ec2_key: "hadoop_project"
+ec2_amid_centos7: "ami-14b07274"
+ec2_vpc_default: "vpc-5b4a7a3e"
+aws_region: "us-west-2"

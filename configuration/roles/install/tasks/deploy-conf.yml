@@ -1,0 +1,14 @@
+
+
+- name: include main vars
+  include_vars: main.yml
+
+- name: create repositories for deploy
+  file: path={{ docker_deploy_path }}/{{ docker_deploy_repository }} state=directory owner={{ docker_deploy_user }} group={{ docker_deploy_user }}
+
+
+- name: copy docker-compose file 
+  template: src=templates/docker-compose.yml.j2 dest={{ docker_deploy_path }}/{{ docker_deploy_repository }}/docker-compose.yml owner={{ docker_deploy_user }} group={{ docker_deploy_user }} mode=0644 backup=yes
+
+
+

@@ -1,0 +1,30 @@
+
+- name: gather os specific variables for centos 7
+  include_vars: "centos-7.yml"
+
+
+- template: src=templates/docker-repo.yml.j2 dest=/etc/yum.repos.d/docker.repo owner=root group=root mode=0644
+
+- name: ensure docker requirements packages are installed
+  yum: name={{ item }} state=latest update_cache=yes
+  with_items: "{{ pre_pkgs }}"
+
+- name: Install docker package
+  yum:
+    name: docker-engine
+    state: latest
+    update_cache: yes
+  #when: "ansible_distribution_major_version == '7'"
+
+- name: active docker service
+  service: name=docker state=started enabled=yes
+
+- easy_install: name=pip state=latest
+
+- name: install pip packages
+  pip: name=backports.ssl-match-hostname state=latest
+
+- name: install docker-compose
+  pip: name=docker-compose state=latest
+
+

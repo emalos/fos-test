@@ -1,0 +1,12 @@
+
+- include: common.yml
+
+- include: create-user.yml
+
+- include: docker.yml
+
+- include: deploy-conf.yml
+  tags: deploy
+
+- include: deployment.yml
+  tags: deploy

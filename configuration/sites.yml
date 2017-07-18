@@ -1,0 +1,6 @@
+- hosts: ec2hosts
+  user: centos
+  gather_facts: true
+  roles:
+     - install
+
